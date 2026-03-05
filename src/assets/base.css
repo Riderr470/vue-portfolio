@@ -1,5 +1,10 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
+  --primary: #222831;
+  --secondary: #31363f;
+  --tertiary: #76abae;
+  --text-base: #eeeeee;
+
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -55,13 +60,13 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-weight: normal;
 }
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
+  background: linear-gradient(to bottom, var(--primary) 0%, #000000 100%);
   transition:
     color 0.5s,
     background-color 0.5s;
