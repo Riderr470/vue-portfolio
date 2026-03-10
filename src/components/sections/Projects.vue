@@ -60,10 +60,8 @@ const projects = ref([
 }
 
 h2 {
-    font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-    color: white;
 }
 
 .projects-grid {
@@ -73,8 +71,8 @@ h2 {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--secondary);
+    border: 1px solid var(--tertiary);
     padding: 2rem;
     border-radius: 8px;
     display: flex;
@@ -88,7 +86,6 @@ h2 {
 }
 
 .project-card p {
-    color: #666;
     margin-bottom: 1rem;
     flex: 1;
 }
@@ -101,15 +98,16 @@ h2 {
 }
 
 .tech-tag {
-    background: #f0f0f0;
+    background: var(--tertiary);
     padding: 0.3rem 0.8rem;
     border-radius: 4px;
     font-size: 0.85rem;
-    color: #555;
+    color: var(--secondary);
+    border: none;
 }
 
 .project-link {
-    color: #667eea;
+    color: var(--tertiary);
     text-decoration: none;
     font-weight: 500;
 }

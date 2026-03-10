@@ -3,6 +3,7 @@
         <Navbar />
 
         <div class="games-container">
+            <ThemePicker />
             <h1>Mini Games Collection</h1>
             <div class="games-grid">
                 <router-link to="/games/tic-tac-toe" class="game-card">
@@ -19,6 +20,7 @@
 <script setup>
 import Navbar from '@/components/partials/Navbar.vue'
 import Footer from '@/components/partials/Footer.vue'
+import ThemePicker from '@/components/extras/ThemePicker.vue';
 </script>
 
 <style scoped>

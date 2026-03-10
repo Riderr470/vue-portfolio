@@ -21,15 +21,15 @@ const education = ref([
     {
         id: 1,
         degree: 'Bachelor of Science in Computer Science',
-        institution: 'Your University Name',
-        year: '2018 - 2022',
+        institution: 'American International University Bangladesh',
+        year: '2019 - 2024',
         description: 'Focused on web development and software engineering'
     },
     {
         id: 2,
         degree: 'Higher Secondary Certificate',
-        institution: 'Your College Name',
-        year: '2016 - 2018',
+        institution: 'Uttara Eminence College',
+        year: '2017 - 2018',
         description: 'Science background with focus on mathematics and computer science'
     }
 ])
@@ -50,7 +50,6 @@ h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-    color: white;
 }
 
 .education-list {
@@ -60,10 +59,10 @@ h2 {
 }
 
 .education-item {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--secondary);
     padding: 2rem;
     border-radius: 8px;
-    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    border-left: 4px solid var(--tertiary);
     backdrop-filter: blur(10px);
 }
 
@@ -74,12 +73,11 @@ h2 {
 
 .education-item h4 {
     font-size: 1.1rem;
-    color: #667eea;
     margin-bottom: 0.5rem;
 }
 
 .year {
-    color: #666;
+    color: var(--text-base);
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }

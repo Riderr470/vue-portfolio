@@ -40,7 +40,6 @@ h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-    color: white;
 }
 
 .skills-grid {
@@ -50,8 +49,8 @@ h2 {
 }
 
 .skill-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--secondary);
+    border: 1px solid var(--tertiary);
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
@@ -64,6 +63,6 @@ h2 {
 }
 
 .skill-card p {
-    color: #666;
+    color: var(--text-base);
 }
 </style>
