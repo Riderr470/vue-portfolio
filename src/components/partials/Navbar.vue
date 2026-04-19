@@ -9,29 +9,38 @@
                 <router-link to="/contact">Contact</router-link>
                 <router-link to="/games">Fun</router-link>
             </div>
+
+            <button class="menu-btn" @click="menuOpen = !menuOpen">☰</button>
+        </div>
+
+        <div class="mobile-menu" :class="{ open: menuOpen }">
+            <router-link to="/" @click="menuOpen = false">Home</router-link>
+            <router-link to="/about" @click="menuOpen = false">About</router-link>
+            <router-link to="/contact" @click="menuOpen = false">Contact</router-link>
+            <router-link to="/games" @click="menuOpen = false">Fun</router-link>
         </div>
     </nav>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 const navbar = ref(null)
+const menuOpen = ref(false)
+
+const handleScroll = () => {
+    if (!navbar.value) return
+    const scrolled = window.scrollY > 0
+    navbar.value.classList.toggle('scrolled', scrolled)
+}
 
 onMounted(() => {
-    const handleScroll = () => {
-        if (!navbar.value) return
-        const scrolled = window.scrollY > 0
-        navbar.value.classList.toggle('scrolled', scrolled)
-    }
-
     window.addEventListener('scroll', handleScroll)
-    // also check on load
     handleScroll()
+})
 
-    return () => {
-        window.removeEventListener('scroll', handleScroll)
-    }
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
@@ -48,10 +57,8 @@ onMounted(() => {
     transition: all 0.3s ease;
 }
 
-/* State when scrolled */
 .navbar.scrolled {
     background: transparent;
-    /* dark semi‑opaque glass */
     backdrop-filter: blur(10px);
 }
 
@@ -77,10 +84,53 @@ onMounted(() => {
     align-items: center;
 }
 
-.nav-links a {
+.nav-links a,
+.mobile-menu a {
     color: var(--text-base);
     text-decoration: none;
-    /* No opacity change on hover */
     transition: none;
+}
+
+.menu-btn,
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-base);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1rem 0;
+    }
+
+    .mobile-menu.open {
+        display: flex;
+    }
 }
 </style>

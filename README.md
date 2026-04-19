@@ -1,44 +1,30 @@
-# mini-games
+```text
+my projects details:
+  1. Expense tracker
+  2. Family Tree
+  3. letsmeet
 
-This template should help get you started developing with Vue 3 in Vite.
+office projects:
+  genmart:
+    accomplishments:
+      1. Implemented product inventory system for multiple suppliers and history management using eloquent relations.
+      2.
+  nisamirrorfashion:
+    accomplishments:
+      1. Optimized dashboard system, so it does not hang when thoudands of data calculation is done.
+      2. optimized 3rd party api calls using job,queue,sheduler so they sync in the background.
 
-## Recommended IDE Setup
+personal projects:
+  project 1: expence tracker
+    accomplishments:
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+  project 2: Family Tree
+    accomplishments: This project was done to learn ai tools for work efficiency
+      1. Learned to use larvel boost.
+      2. Learned advantages and drawbacks of AI
+          # ai is impressive when used for small mundane tasks
+          # ai messes for larger full feature task with minimal guideline or unclear small details, the mess is hard to fix later.
+          # design ideas are not very good, but backend structure maintain is not bad
+      3. quick small scale project.
 ```

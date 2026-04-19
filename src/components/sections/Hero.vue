@@ -1,11 +1,9 @@
 <template>
     <section class="hero">
         <div class="hero-content-text">
-            <div class="container-left">
-                <h1>Hi, I'm Ridan Rabab Majumder</h1>
-                <h2>Laravel Software Developer</h2>
-                <p>Building web applications with Laravel, Vue.js, and modern technologies</p>
-            </div>
+            <h1>Hi, I'm Ridan Rabab Majumder</h1>
+            <h2>Laravel Software Developer</h2>
+            <p>Building web applications with Laravel, Vue.js, and modern technologies</p>
         </div>
         <div class="hero-content-image">
             <div class="circle-wrapper">
@@ -25,12 +23,14 @@
     align-items: center;
     justify-content: space-evenly;
     min-height: 100vh;
-    color: white;
+    color: var(--text-base);
     text-align: center;
+    padding: 2rem;
+    gap: 2rem;
 }
 
 .hero-content-text h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 1rem;
 }
 
@@ -38,10 +38,24 @@
     display: flex;
 }
 
-.hero-content h2 {
-    font-size: 1.8rem;
+.hero-content-text h2 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: 1rem;
     font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 80px;
+    }
+
+    .circle-wrapper,
+    .outer-circle {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 .circle-wrapper {
