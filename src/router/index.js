@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'tic-tac-toe',
       component: () => import('../views/games/TicTacToeView.vue'),
     },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/Contact.vue'),
+    },
   ],
 })
 
