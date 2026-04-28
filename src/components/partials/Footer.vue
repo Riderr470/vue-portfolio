@@ -3,8 +3,8 @@
         <div class="footer-content">
             <p>&copy; 2026 Laravel Developer Portfolio. All rights reserved.</p>
             <div class="footer-links">
-                <a href="https://github.com" target="_blank">GitHub</a>
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Riderr470" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/ridan-rabab/" target="_blank">LinkedIn</a>
             </div>
         </div>
     </footer>
