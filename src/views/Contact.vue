@@ -27,7 +27,7 @@
                                 <span class="link-value">{{ link.value }}</span>
                             </span>
                             <span class="link-arrow">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)"
                                     stroke-width="2">
                                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                                 </svg>
@@ -56,7 +56,7 @@
                         <div class="form-row">
                             <div class="field" :class="{ 'has-error': errors.name }">
                                 <label for="contact-name">name<span class="required">*</span></label>
-                                <input id="contact-name" v-model="form.name" type="text" placeholder="Rider Islam"
+                                <input id="contact-name" v-model="form.name" type="text" placeholder="John Cena"
                                     autocomplete="name" @blur="validate('name')" />
                                 <span v-if="errors.name" class="field-error">{{ errors.name }}</span>
                             </div>
@@ -83,7 +83,7 @@
 
                         <button type="submit" class="submit-btn" :class="{ 'is-sent': sent, 'is-sending': sending }">
                             <span v-if="!sending && !sent" class="btn-content">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)"
                                     stroke-width="2">
                                     <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
                                 </svg>
@@ -91,19 +91,20 @@
                             </span>
                             <span v-else-if="sending" class="btn-content">
                                 <svg class="spin" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
+                                    stroke="var(--tertiary)" stroke-width="2">
                                     <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                                 </svg>
                                 Sending...
                             </span>
                             <span v-else class="btn-content">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)"
                                     stroke-width="2">
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                                 Sent!
                             </span>
                         </button>
+                        <p v-if="submitError" class="submit-error">{{ submitError }}</p>
                     </div>
                 </form>
 
@@ -117,7 +118,12 @@
 <script setup>
 import Footer from '@/components/partials/Footer.vue'
 import Navbar from '@/components/partials/Navbar.vue'
+import emailjs from '@emailjs/browser'
 import { ref, reactive, onMounted } from 'vue'
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 const headerRef = ref(null)
 const linksRef = ref(null)
@@ -125,6 +131,7 @@ const formRef = ref(null)
 
 const sending = ref(false)
 const sent = ref(false)
+const submitError = ref('')
 
 const form = reactive({ name: '', email: '', subject: '', message: '' })
 const errors = reactive({ name: '', email: '', message: '' })
@@ -132,26 +139,26 @@ const errors = reactive({ name: '', email: '', message: '' })
 const contactLinks = [
     {
         label: 'Email',
-        value: 'rider@example.com',
-        href: 'mailto:rider@example.com',
-        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        value: 'riderr40@gmail.com',
+        href: 'mailto:riderr40@gmail.com',
+        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)" stroke-width="1.75">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 7-10 7L2 7"/>
             </svg>`,
     },
     {
         label: 'GitHub',
-        value: 'github.com/rider',
-        href: 'https://github.com',
-        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        value: 'github.com/Riderr470',
+        href: 'https://github.com/Riderr470',
+        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)" stroke-width="1.75">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
             </svg>`,
     },
     {
         label: 'LinkedIn',
-        value: 'linkedin.com/in/rider',
-        href: 'https://linkedin.com',
-        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        value: 'linkedin.com/in/ridan-rabab',
+        href: 'https://www.linkedin.com/in/ridan-rabab/',
+        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)" stroke-width="1.75">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
               <rect x="2" y="9" width="4" height="12"/>
               <circle cx="4" cy="4" r="2"/>
@@ -159,9 +166,9 @@ const contactLinks = [
     },
     {
         label: 'WhatsApp',
-        value: '+880 1XXX-XXXXXX',
-        href: 'https://wa.me/880',
-        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        value: '+880 1743757226',
+        href: 'https://wa.me/8801743757226',
+        icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--tertiary)" stroke-width="1.75">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>`,
     },
@@ -186,11 +193,30 @@ async function handleSubmit() {
     if (errors.name || errors.email || errors.message) return
 
     sending.value = true
-    // Simulate network request — wire up your actual API here
-    await new Promise(r => setTimeout(r, 1400))
-    sending.value = false
-    sent.value = true
-    form.name = form.email = form.subject = form.message = ''
+
+    try {
+        await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+                from_name: form.name,
+                from_email: form.email,
+                subject: form.subject || '(No subject)',
+                message: form.message,
+                reply_to: form.email,
+            },
+            EMAILJS_PUBLIC_KEY
+        )
+
+        sent.value = true
+        form.name = form.email = form.subject = form.message = ''
+
+    } catch (err) {
+        console.error('EmailJS error:', err)
+        submitError.value = 'Something went wrong. Please try again.'
+    } finally {
+        sending.value = false
+    }
 }
 
 onMounted(() => {
@@ -549,6 +575,12 @@ onMounted(() => {
     font-weight: 600;
     cursor: pointer;
     transition: all 200ms ease;
+}
+
+.submit-error {
+    font-size: 0.72rem;
+    color: var(--color-error, #d163a7);
+    margin-top: 0.35rem;
 }
 
 .submit-btn:hover {
